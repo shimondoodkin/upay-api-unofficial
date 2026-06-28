@@ -1,0 +1,15 @@
+{
+  "name": "upay-express-payment-example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Example Node Express website payment flow for Upay hosted payment iframe, server-side verification, progress page, and thank-you page.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5"
+  }
+}

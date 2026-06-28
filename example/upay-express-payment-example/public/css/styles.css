@@ -1,0 +1,220 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #102033;
+  --muted: #657386;
+  --line: #dbe3ee;
+  --strong: #111827;
+  --radius: 22px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; color: var(--text); background: var(--bg); }
+a { color: inherit; }
+
+.hello-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero-card, .config-card, .center-card, .message-page {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 45px rgba(16, 32, 51, 0.08);
+}
+
+.hero-card {
+  padding: 34px;
+  margin-bottom: 20px;
+  background: radial-gradient(circle at top left, #eaf0ff, #fff 48%, #f7fffb);
+}
+
+.eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--muted); font-weight: 800; }
+h1 { font-size: clamp(34px, 6vw, 64px); line-height: .95; margin: 10px 0 16px; }
+h2 { margin-top: 0; font-size: 24px; }
+.lead { max-width: 720px; color: var(--muted); font-size: 18px; line-height: 1.55; }
+.muted { color: var(--muted); line-height: 1.5; }
+.tiny { color: rgba(255,255,255,.76); font-size: 13px; line-height: 1.45; }
+
+.config-card { padding: 28px; }
+.grid { display: grid; gap: 16px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+label { display: grid; gap: 8px; font-weight: 700; margin: 16px 0; }
+input, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 14px;
+  font: inherit;
+  color: var(--strong);
+  background: white;
+}
+.check-grid { margin: 16px 0; }
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 0;
+}
+.check input { width: auto; }
+
+.primary, .secondary {
+  appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 22px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+.primary { background: #111827; color: white; }
+.secondary { border: 1px solid rgba(255,255,255,.35); color: white; background: rgba(255,255,255,.12); }
+.config-card .primary { margin-top: 10px; }
+
+.pay-body { overflow: hidden; background: #0f172a; }
+.pay-layout {
+  height: 100dvh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: minmax(360px, 42%) 1fr;
+  overflow: hidden;
+}
+.pay-side {
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 54px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(125, 211, 252, .42), transparent 28%),
+    radial-gradient(circle at 75% 78%, rgba(134, 239, 172, .30), transparent 30%),
+    linear-gradient(135deg, #111827, #1e3a8a 52%, #0f766e);
+}
+.brand-pill {
+  width: fit-content;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-weight: 800;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.10);
+}
+.pay-copy { max-width: 540px; color: rgba(255,255,255,.84); font-size: 18px; line-height: 1.55; }
+.order-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px 18px;
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 18px;
+  background: rgba(255,255,255,.10);
+}
+.order-summary span { color: rgba(255,255,255,.68); }
+.order-summary strong { text-align: right; overflow: hidden; text-overflow: ellipsis; }
+.iframe-wrap { min-width: 0; min-height: 0; background: white; }
+.iframe-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.redirect-body { min-height: 100dvh; display: grid; place-items: center; padding: 24px; }
+.center-card { padding: 28px; text-align: center; width: min(460px, 100%); }
+.center-card h1 { font-size: 34px; }
+
+.message-page {
+  width: min(680px, calc(100% - 32px));
+  margin: 48px auto;
+  padding: 32px;
+  text-align: center;
+}
+.message-page h1 { font-size: clamp(34px, 7vw, 54px); }
+.spinner {
+  width: 54px;
+  height: 54px;
+  border: 5px solid #dbe3ee;
+  border-top-color: #111827;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#statusBox {
+  background: #0f172a;
+  color: #d7fbe8;
+  padding: 16px;
+  border-radius: 16px;
+  overflow: auto;
+  text-align: left;
+}
+.success-mark {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 42px;
+  font-weight: 900;
+}
+.receipt-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 18px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  margin: 20px 0;
+}
+.receipt-box span { color: var(--muted); }
+.receipt-box strong { text-align: right; overflow-wrap: anywhere; }
+.message-page .secondary { color: #111827; border-color: var(--line); background: white; }
+
+@media (max-width: 760px) {
+  .grid.two, .grid.three { grid-template-columns: 1fr; }
+  .hello-page { width: min(100% - 20px, 560px); padding: 10px 0 24px; }
+  .hero-card, .config-card { padding: 20px; border-radius: 18px; }
+
+  .pay-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .pay-side {
+    flex: 0 0 20dvh;
+    min-height: 128px;
+    padding: 12px 16px;
+    justify-content: center;
+  }
+  .pay-side h1 { font-size: 26px; margin: 6px 0; }
+  .pay-copy { display: none; }
+  .brand-pill { font-size: 12px; padding: 6px 10px; }
+  .order-summary {
+    grid-template-columns: auto 1fr;
+    gap: 4px 10px;
+    padding: 10px 12px;
+    margin: 6px 0 0;
+    font-size: 13px;
+  }
+  .tiny, .pay-side .secondary { display: none; }
+  .iframe-wrap {
+    flex: 1 1 80dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
