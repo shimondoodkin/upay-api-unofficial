@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "Upay Website Payment Scoped API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.upay.co.il"
+    },
+    {
+      "key": "sessionid",
+      "value": ""
+    },
+    {
+      "key": "cashierid",
+      "value": ""
+    },
+    {
+      "key": "transactionid",
+      "value": ""
+    },
+    {
+      "key": "filename",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Login / get session (example envelope)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"refername\": \"UPAY\", \"livesystem\": 1, \"language\": \"HE\"}, \"request\": {\"mainaction\": \"CONNECTION\", \"minoraction\": \"LOGIN\", \"encoding\": \"json\", \"parameters\": {\"email\": \"YOUR_API_USERNAME_OR_EMAIL\", \"password\": \"YOUR_API_KEY_OR_PASSWORD_CONFIRM_WITH_UPAY\", \"details\": 1}}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get transactions / verify payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"sessionid\": \"{{sessionid}}\"}, \"request\": {\"mainaction\": \"TRANSACTIONSINFO\", \"minoraction\": \"GETTRANSACTIONS\", \"encoding\": \"json\", \"parameters\": {\"starttime\": \"2026-06-27T00:00:00.000z\", \"endtime\": \"2026-06-27T23:59:59.999z\"}}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Refund / cancel credit-card transfer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"sessionid\": \"{{sessionid}}\"}, \"request\": {\"mainaction\": \"CASHIER\", \"minoraction\": \"CANCELDEPOSITCREDITCARDTRANSFER\", \"encoding\": \"json\", \"parameters\": {\"passwordmd5\": \"CONFIRM_REQUIRED_AUTH_WITH_UPAY\", \"cancellations\": [{\"cashierid\": \"{{cashierid}}\", \"amount\": \"10.00\", \"comment\": \"Refund from website order\"}]}}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get receipt",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"sessionid\": \"{{sessionid}}\"}, \"request\": {\"mainaction\": \"TRANSACTIONSINFO\", \"minoraction\": \"GETRECEIPT\", \"encoding\": \"json\", \"parameters\": {\"transactionid\": \"{{transactionid}}\", \"copy\": 1}}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create invoice+receipt for transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"sessionid\": \"{{sessionid}}\"}, \"request\": {\"mainaction\": \"CUSTOMEROFFICE\", \"minoraction\": \"CREATECLIENTINVOICE\", \"encoding\": \"json\", \"parameters\": {\"create\": 1, \"cashierid\": \"{{cashierid}}\", \"creationdate\": \"2026-06-27\", \"invoicetypename\": \"INVOICEANDRECEIPT\", \"connectiontype\": 1, \"products\": [{\"productdescription\": \"Website service\", \"quantity\": \"1\"}]}}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Download file by filename",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": "{{baseUrl}}/API6/clientsecure/json.php",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "msg",
+              "value": "{\"header\": {\"sessionid\": \"{{sessionid}}\"}, \"request\": {\"mainaction\": \"TRANSACTIONSINFO\", \"minoraction\": \"DOWNLOADFILE\", \"encoding\": \"json\", \"parameters\": {\"filename\": \"{{filename}}\", \"filetype\": \"r\"}}}"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
