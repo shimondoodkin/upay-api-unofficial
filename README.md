@@ -5,6 +5,14 @@ Unofficial, reverse-engineered integration notes for the **Upay website payment 
 > **Status:** unofficial / community documentation. Not affiliated with or endorsed by Upay.
 > Scoped to merchant website payments — checkout, verification, refunds, and receipts/invoices.
 
+> **Update 2026-09-02:** server-side verification was **confirmed against the
+> live production API with a real charged payment** — see
+> [`upay_verified_live_findings.md`](upay_verified_live_findings.md) for the
+> required login batch (`CONNECTION/LOGIN` with `email`/`key` in
+> *parameters*; header credentials answer `130 PERMISSION_DENIED`), the real
+> response shape (`results[1].result.sendertransactions`), working
+> `GETTRANSACTIONS` filters, and field quirks.
+
 📖 **[View the rendered documentation (GitHub Pages)](https://shimondoodkin.github.io/upay-api-unofficial/)**
 
 ## Scope
@@ -28,6 +36,7 @@ Unofficial, reverse-engineered integration notes for the **Upay website payment 
 | [`upay_website_payment_scoped_documentation.html`](upay_website_payment_scoped_documentation.html) | HTML rendering — [view live](https://shimondoodkin.github.io/upay-api-unofficial/). |
 | [`upay_website_payment_scoped_postman_collection.json`](upay_website_payment_scoped_postman_collection.json) | Postman collection for the scoped endpoints. |
 | [`upay_observed_status_translations.md`](upay_observed_status_translations.md) | Observed transaction status codes and meanings. |
+| [`upay_verified_live_findings.md`](upay_verified_live_findings.md) | **Live-verified (2026-09-02)**: login batch, real response shape, working GETTRANSACTIONS filters, field quirks. |
 | [`upay_server_side_verification_rule.md`](upay_server_side_verification_rule.md) | Server-side verification rule for safe fulfillment. |
 
 ## Verification model (summary)

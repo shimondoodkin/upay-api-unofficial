@@ -306,6 +306,14 @@ Request shape:
 
 Possible useful filters observed in Upay UI for transaction/invoice search include dates, four digits, name, email, `cashierid`, `invoiceid`, and `clientinvoiceid`. Exact supported filters for `GETTRANSACTIONS` should be verified by test calls.
 
+> **VERIFIED LIVE 2026-09-02** — see `upay_verified_live_findings.md`: a
+> `CONNECTION/LOGIN` batch item (credentials in `parameters` as
+> `email`/`key`) is REQUIRED before this action (header credentials answer
+> `130 PERMISSION_DENIED` for everything); results come back under
+> `results[1].result.sendertransactions`; working filters are
+> `paymentdetails`, `cashierids: []`, and `fromdate`/`todate` (ISO
+> `starttime`/`endtime` fail with `1030`).
+
 ### 6.3 Verify-transactions API
 
 Observed Upay JS also uses:
